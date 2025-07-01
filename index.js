@@ -9,10 +9,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://adhouse28:HaqQuxBWpZqme8vB@cluster0.beq68us.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+);
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true },
@@ -117,3 +117,4 @@ app.get("/api/users/:_id/logs", async (req, res) => {
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
